@@ -1,262 +1,376 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Easy Iron Pro - Rangoshin</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#" class="logo">Rangoshin</a>
-            <div class="nav-toggle" id="navToggle">
-                <i class='bx bx-menu'></i>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Easy Iron Pro - Rangoshin</title>
+        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    </head>
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="#" class="logo">Rangoshin</a>
+                <div class="nav-toggle" id="navToggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <div class="theme-toggle" id="themeToggle">
+                            <i class="fa-solid fa-moon"></i> <!-- Font Awesome Moon Icon -->
+                        </div>
+                    </li>
+                    <li>
+                        <div class="cart-icon" onclick="toggleCart()">
+                            <i class='bx bx-cart' style="font-size: 24px;"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </div>
+                    </li>
+                </ul>
             </div>
-            <ul class="nav-links" id="navLinks">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#products">Products</a></li>
-                <li><a href="#testimonials">Testimonials</a></li>
-                <li><a href="#contact">Contact</a></li>
-                <li>
-                    <div class="theme-toggle" id="themeToggle">
-                        <i class="fa-solid fa-moon"></i> <!-- Font Awesome Moon Icon -->
-                    </div>
-                </li>
-                <li>
-                    <div class="cart-icon" onclick="toggleCart()">
-                        <i class='bx bx-cart' style="font-size: 24px;"></i>
-                        <span class="cart-count" id="cartCount">0</span>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Effortless Ironing, <span>Every Time!</span></h1>
-                <p>Experience the future of garment care with Easy Iron Pro. Smart, efficient, and designed for modern living.</p>
-                <div class="hero-buttons">
-                    <a href="#products" class="btn btn-primary">
-                        Shop Now
-                        <i class='bx bx-right-arrow-alt'></i>
-                    </a>
-                    <button class="btn btn-secondary">Learn More</button>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="image-bg"></div>
-                <img src="./image.png" alt="Easy Iron Pro">
-            </div>
-        </div>
-    </section>
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="section-container">
-            <h2 class="section-title">Revolutionary Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class='bx bx-rotate-360'></i>
-                    <h3>360° Rotating Board</h3>
-                    <p>Ensures wrinkle-free ironing on both sides with our innovative rotating technology.</p>
-                </div>
-                <div class="feature-card">
-                    <i class='bx bx-chip'></i>
-                    <h3>Smart Fabric Detection</h3>
-                    <p>Automatically detects fabric type and adjusts temperature and pressure accordingly.</p>
-                </div>
-                <div class="feature-card">
-                    <i class='bx bx-leaf'></i>
-                    <h3>Energy Efficient</h3>
-                    <p>Advanced technology ensures minimal power consumption without compromising performance.</p>
-                </div>
-                <div class="feature-card">
-                    <i class='bx bx-mobile-alt'></i>
-                    <h3>Smart Controls</h3>
-                    <p>Control your Easy Iron Pro from your smartphone with our intuitive app.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="products">
-        <div class="section-container">
-            <h2 class="section-title">Our Products</h2>
-            <div class="products-grid" id="productsContainer">
-                <!-- Products will be dynamically inserted here -->
-            </div>
-        </div>
-    </section>
-
-    <!-- Cart Sidebar -->
-    <div class="cart-sidebar" id="cartSidebar">
-        <div class="cart-header">
-            <h2>Your Cart</h2>
-            <button class="cart-close" onclick="toggleCart()">
-                <i class='bx bx-x'></i>
-            </button>
-        </div>
-        <div class="cart-items" id="cartItems">
-            <!-- Cart items will be dynamically inserted here -->
-        </div>
-        <div class="cart-footer" id="cartFooter">
-            <div class="cart-total">
-                <span>Total:</span>
-                <span id="cartTotal">₹0.00</span>
-            </div>
-            <button onclick="showCheckoutForm()" class="btn btn-primary" style="width: 100%;">
-                Checkout <i class='bx bx-check'></i>
-            </button>
-        </div>
-    
-        <!-- Checkout Form -->
-        <div class="checkout-form" id="checkoutForm">
-            <h2>Checkout</h2>
-            <form id="checkoutDetailsForm">
-                <div class="form-group">
-                    <label for="name">Name</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="address">Address</label>
-                    <textarea id="address" name="address" required></textarea>
-                </div>
-                <div class="form-group">
-                    <label for="paymentMethod">Payment Method</label>
-                    <select id="paymentMethod" name="paymentMethod" required>
-                        <option value="creditCard">Credit Card</option>
-                        <option value="paypal">PayPal</option>
-                        <option value="cashOnDelivery">Cash on Delivery</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="deliveryDate">Delivery Date</label>
-                    <input type="date" id="deliveryDate" name="deliveryDate" required>
-                </div>
-                <button type="submit" class="btn btn-primary">Confirm Order</button>
-            </form>
-        </div>
-    
-        <!-- Order Confirmation -->
-        <div class="order-confirmation" id="orderConfirmation">
-            <h2>Order Confirmed!</h2>
-            <p>Your order has been successfully placed.</p>
-            <p>Expected Delivery Date: <span id="expectedDate"></span></p>
-            <div class="confirmation-animation">
-                <i class='bx bx-check-circle'></i>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="section-container">
-            <h2 class="section-title">What Our Customers Say</h2>
-            <div class="testimonials-slider" id="testimonialSlider">
-                <!-- Testimonials will be dynamically inserted here -->
-            </div>
-            <div class="testimonial-dots" id="testimonialDots"></div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="section-container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <div class="info-item">
-                        <i class='bx bx-envelope'></i>
-                        <p>info@rangoshin.com</p>
-                    </div>
-                    <div class="info-item">
-                        <i class='bx bx-phone'></i>
-                        <p>+1 (555) 123-4567</p>
-                    </div>
-                    <div class="info-item">
-                        <i class='bx bx-map'></i>
-                        <p>123 Innovation Drive, Tech City, TC 12345</p>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1>Effortless Ironing, <span>Every Time!</span></h1>
+                    <p>Experience the future of garment care with Easy Iron Pro. Smart, efficient, and designed for modern living.</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary">
+                            Shop Now
+                            <i class='bx bx-right-arrow-alt'></i>
+                        </a>
+                        <button class="btn btn-secondary">Learn More</button>
                     </div>
                 </div>
-                <form id="contactForm" class="contact-form">
+                <div class="hero-image">
+                    <div class="image-bg"></div>
+                    <img src="./image.png" alt="Easy Iron Pro">
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features">
+            <div class="section-container">
+                <h2 class="section-title">Revolutionary Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class='bx bx-rotate-360'></i>
+                        <h3>360° Rotating Board</h3>
+                        <p>Ensures wrinkle-free ironing on both sides with our innovative rotating technology.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class='bx bx-chip'></i>
+                        <h3>Smart Fabric Detection</h3>
+                        <p>Automatically detects fabric type and adjusts temperature and pressure accordingly.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class='bx bx-leaf'></i>
+                        <h3>Energy Efficient</h3>
+                        <p>Advanced technology ensures minimal power consumption without compromising performance.</p>
+                    </div>
+                    <div class="feature-card">
+                        <i class='bx bx-mobile-alt'></i>
+                        <h3>Smart Controls</h3>
+                        <p>Control your Easy Iron Pro from your smartphone with our intuitive app.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Products Section -->
+        <section id="products" class="products">
+            <div class="section-container">
+                <h2 class="section-title">Our Products</h2>
+                <div class="products-grid" id="productsContainer">
+                    <!-- Products will be dynamically inserted here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Sidebar -->
+        <div class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+                <h2>Your Cart</h2>
+                <button class="cart-close" onclick="toggleCart()">
+                    <i class='bx bx-x'></i>
+                </button>
+            </div>
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items will be dynamically inserted here -->
+            </div>
+            <div class="cart-footer" id="cartFooter">
+                <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">₹0.00</span>
+                </div>
+                <button onclick="showCheckoutForm()" class="btn btn-primary" style="width: 100%;">
+                    Checkout <i class='bx bx-check'></i>
+                </button>
+            </div>
+        
+            <!-- Checkout Form -->
+            <div class="checkout-form" id="checkoutForm">
+                <h2>Checkout</h2>
+                <form id="checkoutDetailsForm">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" required>
                     </div>
                     <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" required></textarea>
+                        <label for="address">Address</label>
+                        <textarea id="address" name="address" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <div class="form-group">
+                        <label for="paymentMethod">Payment Method</label>
+                        <select id="paymentMethod" name="paymentMethod" required>
+                            <option value="creditCard">Credit Card</option>
+                            <option value="paypal">PayPal</option>
+                            <option value="cashOnDelivery">Cash on Delivery</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="deliveryDate">Delivery Date</label>
+                        <input type="date" id="deliveryDate" name="deliveryDate" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary" id="confirmOrderButton">Confirm Order</button>
                 </form>
             </div>
+        
+            <!-- Order Confirmation -->
+            <div class="order-confirmation" id="orderConfirmation">
+                <h2>Order Confirmed!</h2>
+                <p>Your order has been successfully placed.</p>
+                <p>Expected Delivery Date: <span id="expectedDate"></span></p>
+                <div class="confirmation-animation">
+                    <i class='bx bx-check-circle'></i>
+                </div>
+            </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Rangoshin</h3>
-                    <p>Revolutionizing garment care with smart technology and innovation.</p>
-                    <div class="social-links">
-                        <a href="#"><i class='bx bxl-facebook'></i></a>
-                        <a href="#"><i class='bx bxl-twitter'></i></a>
-                        <a href="#"><i class='bx bxl-instagram'></i></a>
-                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="section-container">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <div class="testimonials-slider" id="testimonialSlider">
+                    <!-- Testimonials will be dynamically inserted here -->
+                </div>
+                <div class="testimonial-dots" id="testimonialDots"></div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="section-container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="info-item">
+                            <i class='bx bx-envelope'></i>
+                            <p>info@rangoshin.com</p>
+                        </div>
+                        <div class="info-item">
+                            <i class='bx bx-phone'></i>
+                            <p>+91 9442879062</p>
+                        </div>
+                        <div class="info-item">
+                            <i class='bx bx-map'></i>
+                            <p>123 vivekanadhar street , dubai main road , dubai - 28</p>
+                        </div>
                     </div>
-                </div>
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#products">Products</a></li>
-                        <li><a href="#testimonials">Testimonials</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Shipping Info</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Newsletter</h3>
-                    <p>Subscribe to get updates about our product launches and special offers.</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Enter your email">
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Rangoshin. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+        </section>
 
-    <script src="script.js"></script>
-</body>
-</html>
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-content">
+                    <div class="footer-section">
+                        <h3>Rangoshin</h3>
+                        <p>Revolutionizing garment care with smart technology and innovation.</p>
+                        <div class="social-links">
+                            <a href="#"><i class='bx bxl-facebook'></i></a>
+                            <a href="#"><i class='bx bxl-twitter'></i></a>
+                            <a href="#"><i class='bx bxl-instagram'></i></a>
+                            <a href="#"><i class='bx bxl-linkedin'></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#testimonials">Testimonials</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Support</h3>
+                        <ul>
+                            <li><a href="#">FAQ</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Terms of Service</a></li>
+                            <li><a href="#">Shipping Info</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Newsletter</h3>
+                        <p>Subscribe to get updates about our product launches and special offers.</p>
+                        <form class="newsletter-form">
+                            <input type="email" placeholder="Enter your email">
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="footer-bottom">
+                    <p>&copy; 2025 Rangoshin. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Telegram Bot Script -->
+        <script>
+            // Telegram Bot API Token (Replace with your bot's token)
+            const TELEGRAM_BOT_TOKEN = '7578459764:AAHwECf3s5ZOi-lenG5P_sRXLOZbJp0KsGY';
+            // Your Telegram Chat ID (You can get this by sending a message to your bot and checking the updates)
+            const TELEGRAM_CHAT_ID = '1708583914';
+        
+            // Array to store cart items
+            let cartItems = [];
+        
+            // Function to add an item to the cart
+            function addToCart(productName, price) {
+                // Add the product to the cartItems array
+                cartItems.push({ name: productName, price: price });
+        
+                // Update the cart UI
+                updateCartUI();
+            }
+        
+            // Function to update the cart UI
+            function updateCartUI() {
+                const cartItemsContainer = document.getElementById('cartItems');
+                const cartTotalElement = document.getElementById('cartTotal');
+        
+                // Clear the cart UI
+                cartItemsContainer.innerHTML = '';
+        
+                // Add each item to the cart UI
+                let total = 0;
+                cartItems.forEach((item, index) => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <span class="product-name">${item.name}</span>
+                        <span class="product-price">₹${item.price.toFixed(2)}</span>
+                        <button onclick="removeFromCart(${index})" class="remove-item">
+                            <i class='bx bx-trash'></i>
+                        </button>
+                    `;
+                    cartItemsContainer.appendChild(cartItem);
+        
+                    // Calculate total
+                    total += item.price;
+                });
+        
+                // Update the total
+                cartTotalElement.innerText = `₹${total.toFixed(2)}`;
+            }
+        
+            // Function to remove an item from the cart
+            function removeFromCart(index) {
+                cartItems.splice(index, 1); // Remove the item from the array
+                updateCartUI(); // Update the cart UI
+            }
+        
+            // Function to send a message to Telegram
+            function sendMessageToTelegram(message) {
+                const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
+                const data = {
+                    chat_id: TELEGRAM_CHAT_ID,
+                    text: message,
+                };
+        
+                fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                })
+                .then(response => response.json())
+                .then(result => {
+                    console.log('Message sent to Telegram:', result);
+                    alert('Order confirmed and details sent successfully!');
+                })
+                .catch(error => {
+                    console.error('Error sending message to Telegram:', error);
+                    alert('Failed to send details. Please try again.');
+                });
+            }
+        
+            // Handle form submission
+            document.getElementById('checkoutDetailsForm').addEventListener('submit', function (e) {
+                e.preventDefault(); // Prevent the default form submission
+        
+                // Get form values
+                const name = document.getElementById('name').value;
+                const phone = document.getElementById('phone').value;
+                const address = document.getElementById('address').value;
+                const paymentMethod = document.getElementById('paymentMethod').value;
+                const deliveryDate = document.getElementById('deliveryDate').value;
+        
+                // Get cart items as a string
+                let cartDetails = 'Cart Items:\n';
+                cartItems.forEach(item => {
+                    cartDetails += `- ${item.name} (₹${item.price.toFixed(2)})\n`;
+                });
+        
+                // Create the message to send to Telegram
+                const message = `
+                    New Order Details:
+                    Name: ${name}
+                    Phone: ${phone}
+                    Address: ${address}
+                    Payment Method: ${paymentMethod}
+                    Delivery Date: ${deliveryDate}
+                `;
+        
+                // Send the message to Telegram
+                sendMessageToTelegram(message);
+            });
+        </script>
+        
+        <script src="script.js"></script>
+    </body>
+    </html>
